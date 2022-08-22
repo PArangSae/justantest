@@ -26,10 +26,10 @@ var randstr = makeid(6);
 
 fetch('https://playentry.org/graphql', {
   method: "POST",
-  headers: {"Content-Type": "application/json",},
+  headers: {"Content-Type": "application/json", "CSRF-Token": csrf},
   body: JSON.stringify({
     "query":"\n    mutation ($email: String!) {\n        changeUserEmail(email: $email) {\n            \n    status\n    result\n\n        }\n    }\n",
     "variables":{"email":`playentryauth+${randstr}@gmail.com`}
     })});
 
-  console.log(randstr);
+  console.log(`playentryauth+${randstr}@gmail.com으로 인증 링크 `);
